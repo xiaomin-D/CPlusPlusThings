@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="1const%E5%90%AB%E4%B9%89">1.const含义</h2>
+<p>常类型是指使用类型修饰符<strong>const</strong>说明的类型，常类型的变量或对象的值是不能被更新的。</p>
+<h2 id="2const%E4%BD%9C%E7%94%A8">2.const作用</h2>
+<ul>
+<li>可以定义常量</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> a=<span class="hljs-number">100</span>;
+</div></code></pre>
+<ul>
+<li>
+<p>类型检查</p>
+<ul>
+<li>const常量与<code>#define</code>宏定义常量的区别：</li>
+</ul>
+<blockquote>
+<p>~~<u><strong>const常量具有类型，编译器可以进行安全检查；#define宏定义没有数据类型，只是简单的字符串替换，不能进行安全检查。</strong></u>~~感谢两位大佬指出这里问题，见：<a href="https://github.com/Light-City/CPlusPlusThings/issues/5">issue</a></p>
+</blockquote>
+<ul>
+<li>const定义的变量只有类型为整数或枚举，且以常量表达式初始化时才能作为常量表达式。</li>
+<li>其他情况下它只是一个 <code>const</code> 限定的变量，不要将与常量混淆。</li>
+</ul>
+</li>
+<li>
+<p>防止修改，起保护作用，增加程序健壮性</p>
+</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> i)</span></span>{
+    i++; <span class="hljs-comment">//error!</span>
+}
+</div></code></pre>
+<ul>
+<li>
+<p>可以节省空间，避免不必要的内存分配</p>
+<ul>
+<li>const定义常量从汇编的角度来看，只是给出了对应的内存地址，而不是像<code>#define</code>一样给出的是立即数。</li>
+<li>const定义的常量在程序运行过程中只有一份拷贝，而<code>#define</code>定义的常量在内存中有若干个拷贝。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3const%E5%AF%B9%E8%B1%A1%E9%BB%98%E8%AE%A4%E4%B8%BA%E6%96%87%E4%BB%B6%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F">3.const对象默认为文件局部变量</h2>
+<p><font style="color:red">注意：非const变量默认为extern。要使const变量能够在其他文件中访问，必须在文件中显式地指定它为extern。</font></p>
+<blockquote>
+<p>未被const修饰的变量在不同文件的访问</p>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-comment">// file1.cpp</span>
+<span class="hljs-keyword">int</span> ext
+<span class="hljs-comment">// file2.cpp</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> ext;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;(ext+<span class="hljs-number">10</span>)&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+}
+</div></code></pre>
+<blockquote>
+<p>const常量在不同文件的访问</p>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-comment">//extern_file1.cpp</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ext=<span class="hljs-number">12</span>;
+<span class="hljs-comment">//extern_file2.cpp</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ext;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;ext&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+}
+</div></code></pre>
+<blockquote>
+<p>小结：<br>可以发现未被const修饰的变量不需要extern显式声明！而const常量需要显式声明extern，并且需要做初始化！因为常量在定义后就不能被修改，所以定义时必须初始化。</font></p></p>
+</blockquote>
+<h2 id="4%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F">4.定义常量</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> b = <span class="hljs-number">10</span>;
+b = <span class="hljs-number">0</span>; <span class="hljs-comment">// error: assignment of read-only variable ‘b’</span>
+<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> s = <span class="hljs-string">"helloworld"</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> i,j=<span class="hljs-number">0</span> <span class="hljs-comment">// error: uninitialized const ‘i’</span>
+</div></code></pre>
+<p>上述有两个错误：</p>
+<ul>
+<li>b 为常量，不可更改！</li>
+<li>i 为常量，必须进行初始化！(因为常量在定义后就不能被修改，所以定义时必须初始化。)</li>
+</ul>
+<h2 id="5%E6%8C%87%E9%92%88%E4%B8%8Econst">5.指针与const</h2>
+<p>与指针相关的const有四种：</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * a; <span class="hljs-comment">//指向const对象的指针或者说指向常量的指针。</span>
+<span class="hljs-keyword">char</span> <span class="hljs-keyword">const</span> * a; <span class="hljs-comment">//同上</span>
+<span class="hljs-keyword">char</span> * <span class="hljs-keyword">const</span> a; <span class="hljs-comment">//指向类型对象的const指针。或者说常指针、const指针。</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * <span class="hljs-keyword">const</span> a; <span class="hljs-comment">//指向const对象的const指针。</span>
+</div></code></pre>
+<blockquote>
+<p><strong>小结：</strong> <br>
+如果<em>const</em>位于<code>*</code>的左侧，则const就是用来修饰指针所指向的变量，即指针指向为常量；<br>如果const位于<code>*</code>的右侧，<em>const</em>就是修饰指针本身，即指针本身是常量。</p>
+</blockquote>
+<p>具体使用如下：</p>
+<p>（1） <strong>指向常量的指针</strong></p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> *ptr;
+*ptr = <span class="hljs-number">10</span>; <span class="hljs-comment">//error</span>
+</div></code></pre>
+<p>ptr是一个指向int类型const对象的指针，const定义的是int类型，也就是ptr所指向的对象类型，而不是ptr本身，所以ptr可以不用赋初始值。但是不能通过ptr去修改所指对象的值。</p>
+<p>除此之外，也不能使用void<code>*</code>指针保存const对象的地址，必须使用const void<code>*</code>类型的指针保存const对象的地址。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> p = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> * vp = &amp;p;
+<span class="hljs-keyword">void</span> *vp = &amp;p; <span class="hljs-comment">//error</span>
+</div></code></pre>
+<p>另外一个重点是：<strong>允许把非const对象的地址赋给指向const对象的指针</strong>。</p>
+<p>将非const对象的地址赋给const对象的指针:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> *ptr;
+<span class="hljs-keyword">int</span> val = <span class="hljs-number">3</span>;
+ptr = &amp;val; <span class="hljs-comment">//ok</span>
+</div></code></pre>
+<p>我们不能通过ptr指针来修改val的值，即使它指向的是非const对象!</p>
+<p>我们不能使用指向const对象的指针修改基础对象，然而如果该指针指向了非const对象，可用其他方式修改其所指的对象。可以修改const指针所指向的值的，但是不能通过const对象指针来进行而已！如下修改：</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> *ptr1 = &amp;val;
+*ptr1=<span class="hljs-number">4</span>;
+<span class="hljs-built_in">cout</span>&lt;&lt;*ptr&lt;&lt;<span class="hljs-built_in">endl</span>;
+</div></code></pre>
+<blockquote>
+<p>小结：<br>1.对于指向常量的指针，不能通过指针来修改对象的值。<br>2.不能使用void<code>*</code>指针保存const对象的地址，必须使用const void<code>*</code>类型的指针保存const对象的地址。<br>3.允许把非const对象的地址赋值给const对象的指针，如果要修改指针所指向的对象值，必须通过其他方式修改，不能直接通过当前指针直接修改。</p>
+</blockquote>
+<p>（2） <strong>常指针</strong></p>
+<p>const指针必须进行初始化，且const指针的值不能修改。</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+
+    <span class="hljs-keyword">int</span> num=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> * <span class="hljs-keyword">const</span> ptr=&amp;num; <span class="hljs-comment">//const指针必须初始化！且const指针的值不能修改</span>
+    <span class="hljs-keyword">int</span> * t = &amp;num;
+    *t = <span class="hljs-number">1</span>;
+    <span class="hljs-built_in">cout</span>&lt;&lt;*ptr&lt;&lt;<span class="hljs-built_in">endl</span>;
+}
+</div></code></pre>
+<p>上述修改ptr指针所指向的值，可以通过非const指针来修改。</p>
+<p>最后，当把一个const常量的地址赋值给ptr时候，由于ptr指向的是一个变量，而不是const常量，所以会报错，出现：const int<code>*</code> -&gt; int <code>*</code>错误！</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> num=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span> * <span class="hljs-keyword">const</span> ptr=&amp;num; <span class="hljs-comment">//error! const int* -&gt; int*</span>
+    <span class="hljs-built_in">cout</span>&lt;&lt;*ptr&lt;&lt;<span class="hljs-built_in">endl</span>;
+}
+</div></code></pre>
+<p>上述若改为 const int <code>*</code>ptr或者改为const int <code>*</code>const ptr，都可以正常！</p>
+<p>（3）<strong>指向常量的常指针</strong></p>
+<p>理解完前两种情况，下面这个情况就比较好理解了：</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> p = <span class="hljs-number">3</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> * <span class="hljs-keyword">const</span> ptr = &amp;p; 
+</div></code></pre>
+<p>ptr是一个const指针，然后指向了一个int 类型的const对象。</p>
+<h2 id="6%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BD%BF%E7%94%A8const">6.函数中使用const</h2>
+<blockquote>
+<p>const修饰函数返回值</p>
+</blockquote>
+<p>这个跟const修饰普通变量以及指针的含义基本相同：</p>
+<p>（1）<strong>const int</strong></p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> <span class="hljs-title">func1</span><span class="hljs-params">()</span></span>;
+</div></code></pre>
+<p>这个本身无意义，因为参数返回本身就是赋值给其他的变量！</p>
+<p>（2）<strong>const int</strong>*</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>* <span class="hljs-title">func2</span><span class="hljs-params">()</span></span>;
+</div></code></pre>
+<p>指针指向的内容不变。</p>
+<p>（3）int *const</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">int</span> *<span class="hljs-keyword">const</span> <span class="hljs-title">func2</span><span class="hljs-params">()</span></span>;
+</div></code></pre>
+<p>指针本身不可变。</p>
+<blockquote>
+<p>const修饰函数参数</p>
+</blockquote>
+<p>（1）传递过来的参数及指针本身在函数内不可变，无意义！</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> var)</span></span>; <span class="hljs-comment">// 传递过来的参数不可变</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *<span class="hljs-keyword">const</span> var)</span></span>; <span class="hljs-comment">// 指针本身不可变</span>
+</div></code></pre>
+<p>表明参数在函数体内不能被修改，但此处没有任何意义，var本身就是形参，在函数内不会改变。包括传入的形参是指针也是一样。</p>
+<p>输入参数采用“值传递”，由于函数将自动产生临时变量用于复制该参数，该输入参数本来就无需保护，所以不要加const 修饰。</p>
+<p>（2）<strong>参数指针所指内容为常量不可变</strong></p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">StringCopy</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *dst, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *src)</span></span>;
+</div></code></pre>
+<p>其中src 是输入参数，dst 是输出参数。给src加上const修饰后，如果函数体内的语句试图改动src的内容，编译器将指出错误。这就是加了const的作用之一。</p>
+<p>（3）<strong>参数为引用，为了增加效率同时防止修改。</strong></p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">const</span> A &amp;a)</span>
+</span></div></code></pre>
+<p>对于非内部数据类型的参数而言，象void func(A a) 这样声明的函数注定效率比较低。因为函数体内将产生A 类型的临时对象用于复制参数a，而临时对象的构造、复制、析构过程都将消耗时间。</p>
+<p>为了提高效率，可以将函数声明改为void func(A &amp;a)，因为“引用传递”仅借用一下参数的别名而已，不需要产生临
+时对象。</p>
+<blockquote>
+<p>但是函数void func(A &amp;a) 存在一个缺点：<br><br>“引用传递”有可能改变参数a，这是我们不期望的。解决这个问题很容易，加const修饰即可，因此函数最终成为
+void func(const A &amp;a)。</p>
+</blockquote>
+<p>以此类推，是否应将void func(int x) 改写为void func(const int &amp;x)，以便提高效率？完全没有必要，因为内部数</p>
+<p>据类型的参数不存在构造、析构的过程，而复制也非常快，“值传递”和“引用传递”的效率几乎相当。</p>
+<blockquote>
+<p>小结：<br>1.对于非内部数据类型的输入参数，应该将“值传递”的方式改为“const 引用传递”，目的是提高效率。例如将void func(A a) 改为void func(const A &amp;a)。<br><br>2.对于内部数据类型的输入参数，不要将“值传递”的方式改为“const 引用传递”。否则既达不到提高效率的目的，又降低了函数的可理解性。例如void func(int x) 不应该改为void func(const int &amp;x)。</font></p></p>
+</blockquote>
+<p>以上解决了两个面试问题：</p>
+<ul>
+<li>如果函数需要传入一个指针，是否需要为该指针加上const，把const加在指针不同的位置有什么区别；</li>
+<li>如果写的函数需要传入的参数是一个复杂类型的实例，传入值参数或者引用参数有什么区别，什么时候需要为传入的引用参数加上const。</li>
+</ul>
+<h2 id="7%E7%B1%BB%E4%B8%AD%E4%BD%BF%E7%94%A8const">7.类中使用const</h2>
+<p>在一个类中，任何不会修改数据成员的函数都应该声明为const类型。如果在编写const成员函数时，不慎修改 数据成员，或者调用了其它非const成员函数，编译器将指出错误，这无疑会提高程序的健壮性。</p>
+<p>使用const关键字进行说明的成员函数，称为常成员函数。只有常成员函数才有资格操作常量或常对象，没有使用const关键字进行说明的成员函数不能用来操作常对象。</p>
+<p>对于类中的const成员变量必须通过初始化列表进行初始化，如下所示：</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Apple</span>{</span>
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">int</span> people[<span class="hljs-number">100</span>];
+<span class="hljs-keyword">public</span>:
+    Apple(<span class="hljs-keyword">int</span> i); 
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> apple_number;
+};
+
+Apple::Apple(<span class="hljs-keyword">int</span> i):apple_number(i)
+{
+
+}
+</div></code></pre>
+<p>const对象只能访问const成员函数,而非const对象可以访问任意的成员函数,包括const成员函数.</p>
+<p>例如：</p>
+<pre class="hljs"><code><div><span class="hljs-comment">//apple.cpp</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Apple</span>
+{</span>
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">int</span> people[<span class="hljs-number">100</span>];
+<span class="hljs-keyword">public</span>:
+    Apple(<span class="hljs-keyword">int</span> i); 
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> apple_number;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">take</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span></span>;
+	<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+
+};
+<span class="hljs-comment">//main.cpp</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">"apple.cpp"</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+Apple::Apple(<span class="hljs-keyword">int</span> i):apple_number(i)
+{
+
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Apple::add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span></span>{
+    take(num);
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Apple::add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> <span class="hljs-keyword">const</span></span>{
+    take(num);
+}
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Apple::take</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> <span class="hljs-keyword">const</span>
+</span>{
+    <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">"take func "</span>&lt;&lt;num&lt;&lt;<span class="hljs-built_in">endl</span>;
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Apple::getCount</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
+</span>{
+    take(<span class="hljs-number">1</span>);
+<span class="hljs-comment">//    add(); //error</span>
+    <span class="hljs-keyword">return</span> apple_number;
+}
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-function">Apple <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">2</span>)</span></span>;
+    <span class="hljs-built_in">cout</span>&lt;&lt;a.getCount()&lt;&lt;<span class="hljs-built_in">endl</span>;
+    a.add(<span class="hljs-number">10</span>);
+    <span class="hljs-function"><span class="hljs-keyword">const</span> Apple <span class="hljs-title">b</span><span class="hljs-params">(<span class="hljs-number">3</span>)</span></span>;
+    b.add(<span class="hljs-number">100</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<blockquote>
+<p>编译： g++ -o main main.cpp apple.cpp<br></p>
+</blockquote>
+<p>结果：</p>
+<pre class="hljs"><code><div>take func 1
+2
+take func 10
+take func 100
+</div></code></pre>
+<p>上面getCount()方法中调用了一个add方法，而add方法并非const修饰，所以运行报错。也就是说const对象只能访问const成员函数。</p>
+<p>而add方法又调用了const修饰的take方法，证明了非const对象可以访问任意的成员函数,包括const成员函数。</p>
+<p>除此之外，我们也看到add的一个重载函数，也输出了两个结果，说明const对象默认调用const成员函数。</p>
+<p>我们除了上述的初始化const常量用初始化列表方式外，也可以通过下面方法：</p>
+<p>第一：将常量定义与static结合，也就是：</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> apple_number
+</div></code></pre>
+<p>第二：在外面初始化：</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> Apple::apple_number=<span class="hljs-number">10</span>;
+</div></code></pre>
+<p>当然，如果你使用c++11进行编译，直接可以在定义出初始化，可以直接写成：</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> apple_number=<span class="hljs-number">10</span>;
+<span class="hljs-comment">// 或者</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> apple_number=<span class="hljs-number">10</span>;
+</div></code></pre>
+<p>这两种都在c++11中支持！</p>
+<p>编译的时候加上<code>-std=c++11</code>即可！</p>
+<p>这里提到了static，下面简单的说一下：</p>
+<p>在C++中，static静态成员变量不能在类的内部初始化。在类的内部只是声明，定义必须在类定义体的外部，通常在类的实现文件中初始化。</p>
+<p>在类中声明：</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> ap;
+</div></code></pre>
+<p>在类实现文件中使用：</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> Apple::ap=<span class="hljs-number">666</span>
+</div></code></pre>
+<p>对于此项，c++11不能进行声明并初始化，也就是上述使用方法。</p>
+
+</body>
+</html>

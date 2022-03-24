@@ -1,8 +1,5 @@
-## 关于作者：
+# 2022三月22日
 
-个人公众号：
-
-![](../img/wechat.jpg)
 
 ## Bit field 是什么？
 
@@ -16,7 +13,7 @@
 
 位域通常使用结构体声明， 该结构声明为每个位域成员设置名称，并决定其宽度：
 
-```
+```cpp
 struct bit_field_name
 {
 	type member_name : width;
